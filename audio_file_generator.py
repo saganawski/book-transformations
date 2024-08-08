@@ -15,7 +15,7 @@ def chunk_text(text, chunk_size=600):
     return chunks
 
 def generate_mp3(book_text, counter):
-    unique_filename = f"intro-chapter-1-{counter:03d}.mp3"
+    unique_filename = f"intro-chapter-1-Spanish-{counter:03d}.mp3"
     speech_file_path = Path(__file__).parent / unique_filename
     
     response = client.audio.speech.create(
@@ -31,7 +31,7 @@ def generate_mp3(book_text, counter):
     return response.stream_to_file(speech_file_path)
 
 ### run program
-book_text = load_book('output.txt')
+book_text = load_book('translated_text.txt')
 text_chunks = chunk_text(book_text)
 
 for i, chunk in enumerate(text_chunks, start=1):

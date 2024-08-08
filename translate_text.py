@@ -5,10 +5,10 @@ def load_book(file_path):
     with open(file_path, 'r') as file:
         return file.read()
     
-def chunk_text(text, chunk_size=3000):
-    words = text.split();
-    chunks = [' '.join(words[i:i + chunk_size]) for i in range(0, len(words), chunk_size)]
-    return chunks
+# def chunk_text(text, chunk_size=3000):
+#     words = text.split();
+#     chunks = [' '.join(words[i:i + chunk_size]) for i in range(0, len(words), chunk_size)]
+#     return chunks
 
 def translate_text(chunk):
     print("calling api")
@@ -32,6 +32,7 @@ source_text = 'output.txt'
 output_text_file = 'translated_text.txt'
 
 load_text = load_book(source_text)
-text_chunks = chunk_text(load_text)
-translated_text = [translate_text(chunk) for chunk in text_chunks]
+# text_chunks = chunk_text(load_text)
+# translated_text = [translate_text(chunk) for chunk in text_chunks]
+translated_text = translate_text(load_text)
 save_file(translated_text)
