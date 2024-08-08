@@ -34,5 +34,5 @@ def generate_mp3(book_text, counter):
 book_text = load_book('output.txt')
 text_chunks = chunk_text(book_text)
 
-for i, chunk in enumerate(text_chunks, start=1);
+for i, chunk in enumerate(text_chunks, start=1):
     generate_mp3(chunk, i)
