@@ -1,6 +1,5 @@
 from openai import OpenAI
 from pathlib import Path
-import uuid
 
 client = OpenAI()
 
@@ -15,8 +14,8 @@ def chunk_text(text, chunk_size=600):
     chunks = [' '.join(words[i:i + chunk_size]) for i in range(0, len(words), chunk_size)]
     return chunks
 
-def generate_mp3(book_text):
-    unique_filename = f"intro-chapter-1-{uuid.uuid4().hex}.mp3"
+def generate_mp3(book_text, counter):
+    unique_filename = f"intro-chapter-1-{counter:03d}.mp3"
     speech_file_path = Path(__file__).parent / unique_filename
     
     response = client.audio.speech.create(
@@ -35,4 +34,5 @@ def generate_mp3(book_text):
 book_text = load_book('output.txt')
 text_chunks = chunk_text(book_text)
 
-[generate_mp3(chunk) for chunk in text_chunks]
+for i, chunk in enumerate(text_chunks, start=1);
+    generate_mp3(chunk, i)
